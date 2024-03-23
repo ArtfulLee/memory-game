@@ -1,5 +1,6 @@
 import { shuffleArray } from "./shuffleArray.js";
 import { getCards } from "./getCards.js";
+import { flipCard } from "./flipCard.js";
 
 /**
  * @default
@@ -52,7 +53,10 @@ function generateGame(EMOJIS) {
   // Для создания пар эмоджи перезаписываем полученные 8 элементов в перетасованные 16 элементов
   emojisForGames = shuffleArray([...emojisForGames, ...emojisForGames]);
 
+  // Заполняем игровое поле карточками
   getCards(emojisForGames, SELECTORS);
+  // Вешаем на карточки оброботчик события переворота карточки
+  flipCard(SELECTORS);
 }
 
 generateGame(EMOJIS);
