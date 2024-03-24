@@ -66,7 +66,6 @@ function generateGame(EMOJIS) {
 
 /**
  * @function startGame - Запуск игры по кнопке "Начать"
- * @param
  */
 function startGame() {
   // Блокируем кнопку начала игры
