@@ -33,7 +33,6 @@ export function flipCard(SELECTORS, STATE) {
           // считаем количесво открытых пар в игре
           if (flipBackCards(flippedCardOneEqual, flippedCardTwoForEqual)) {
             STATE.amountFlippedCards++;
-            console.log(STATE.amountFlippedCards);
           }
 
           // Очищаем переменный для сравнения двух перевернутых подрят карт
