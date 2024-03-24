@@ -31,7 +31,7 @@ const SELECTORS = {
  * @default
  * @readonly
  * @const {Object} - Объект с состояниями игры
- * @property {number} STATE.moves - Текущее количество ходов в игре (1 ход = 2 перевернутым картам)
+ * @property {number} STATE.moves - Текущее количество ходов в игре
  * @property {number} STATE.timer - Текущее время игры
  * @property {boolean} STATE.isStartGame - Текущее состояние игры
  * @property {boolean} STATE.amountFlippedCards - Текущее количество перевернутых пар карт
@@ -55,8 +55,12 @@ function generateGame(EMOJIS) {
 
   // Заполняем игровое поле карточками
   getCards(emojisForGames, SELECTORS);
+}
+
+function startGame() {
   // Вешаем на карточки оброботчик события переворота карточки
-  flipCard(SELECTORS);
+  flipCard(SELECTORS, STATE);
 }
 
 generateGame(EMOJIS);
+SELECTORS.startGame.addEventListener("click", startGame);
