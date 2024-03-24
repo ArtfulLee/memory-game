@@ -16,6 +16,7 @@ const EMOJIS = ["🥔", "🍒", "🥑", "🌽", "🥕", "🍇", "🍉", "🍌", 
  * @property {HTMLButtonElement} SELECTORS.startGame - Кнопка для запуска игры
  * @property {HTMLDivElement} SELECTORS.moves - Количество шагов открытия карточек
  * @property {HTMLDivElement} SELECTORS.timer - Время игры
+ * @property {HTMLDivElement} SELECTORS.boardContainer - Контейнер игрового поля
  * @property {HTMLDivElement} SELECTORS.board - Игровое поле
  * @property {HTMLDivElement} SELECTORS.win - Вы выиграли
  */
@@ -23,6 +24,7 @@ const SELECTORS = {
   startGame: document.body.querySelector("button"),
   moves: document.body.querySelector(".moves"),
   timer: document.body.querySelector(".timer"),
+  boardContainer: document.body.querySelector(".board-container"),
   board: document.body.querySelector(".board"),
   win: document.body.querySelector(".win"),
 };
@@ -44,12 +46,17 @@ const STATE = {
 };
 
 /**
- * @function generateGame - Функция генерации игры
+ * @var {Array} emojisForGames - Переменная для хранения массива с рандомно перетасованными эмоджи для игры
+ */
+let emojisForGames;
+
+/**
+ * @function generateGame - Функция генерации игрового поля
  * @param {Array} EMOJIS - Начальный массив эмоджи для игры
  */
 function generateGame(EMOJIS) {
   // Берем первые 8 рандомных элементов массива для игры
-  let emojisForGames = shuffleArray(EMOJIS).splice(0, 8);
+  emojisForGames = shuffleArray(EMOJIS).splice(0, 8);
   // Для создания пар эмоджи перезаписываем полученные 8 элементов в перетасованные 16 элементов
   emojisForGames = shuffleArray([...emojisForGames, ...emojisForGames]);
 
@@ -57,9 +64,21 @@ function generateGame(EMOJIS) {
   getCards(emojisForGames, SELECTORS);
 }
 
+/**
+ * @function startGame - Запуск игры по кнопке "Начать"
+ * @param
+ */
 function startGame() {
-  // Вешаем на карточки оброботчик события переворота карточки
-  flipCard(SELECTORS, STATE);
+  // Блокируем кнопку начала игры
+  SELECTORS.startGame.classList.add("disabled");
+
+  // Устанавливаем состояние игры, как начатая
+  STATE.isStartGame = true;
+
+  // Вешаем на игровое поле оброботчик события переворота карточек
+  SELECTORS.board.addEventListener("click", (event) =>
+    flipCard(event, emojisForGames, SELECTORS, STATE)
+  );
 }
 
 generateGame(EMOJIS);

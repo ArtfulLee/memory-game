@@ -8,11 +8,14 @@ export function flipBackCards(flippedCardOneEqual, flippedCardTwoForEqual) {
     flippedCardOneEqual.nextElementSibling.innerText !==
     flippedCardTwoForEqual.nextElementSibling.innerText
   ) {
-    flippedCardOneEqual.parentElement.classList.remove("flipped", "disabled");
-    flippedCardTwoForEqual.parentElement.classList.remove(
-      "flipped",
-      "disabled"
-    );
+    setTimeout(() => {
+      flippedCardOneEqual.parentElement.classList.remove("flipped", "disabled");
+      flippedCardTwoForEqual.parentElement.classList.remove(
+        "flipped",
+        "disabled"
+      );
+    }, 1000);
+
     return false;
   }
 
