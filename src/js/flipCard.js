@@ -29,7 +29,11 @@ export function flipCard(event, emojisForGames, SELECTORS, STATE) {
         flippedCardOneEqual = event.target;
       } else {
         flippedCardTwoForEqual = event.target;
-        flipBackCards(flippedCardOneEqual, flippedCardTwoForEqual);
+
+        /* *******************************************************
+        Надо ли?
+        flipBackCards(flippedCardOneEqual, flippedCardTwoForEqual); 
+        ********************************************************* */
 
         // считаем количесво открытых пар в игре
         if (flipBackCards(flippedCardOneEqual, flippedCardTwoForEqual)) {
