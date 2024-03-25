@@ -1,6 +1,6 @@
 /**
  * @param {HTMLDivElement} flippedCardOneEqual - Первая перевернутая карта
- * @param {HTMLDivElement} flippedCardTwoForEqual Вторая перевернутая карта
+ * @param {HTMLDivElement} flippedCardTwoForEqual - Вторая перевернутая карта
  */
 export function flipBackCards(flippedCardOneEqual, flippedCardTwoForEqual) {
   if (
