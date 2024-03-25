@@ -20,7 +20,7 @@ export function flipCard(event, emojisForGames, SELECTORS, STATE) {
       card.classList.toggle("flipped");
       card.classList.toggle("disabled");
 
-      // Увеличиваем оличество шагов в игре
+      // Увеличиваем количество шагов в игре
       SELECTORS.moves.innerText = `${++STATE.amountMoves} шагов`;
 
       // Первый переворот записываем в flippedCardOneEqual

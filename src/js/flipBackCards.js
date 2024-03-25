@@ -1,5 +1,4 @@
 /**
- *
  * @param {*} flippedCardOneEqual - Первая перевернутая карта
  * @param {*} flippedCardTwoForEqual Вторая перевернутая карта
  */
