@@ -9,8 +9,8 @@ export function getCards(emojisForGames, SELECTORS) {
       "beforeend",
       `
       <div class="card">
-        <div class="card-front"></div>
-        <div class="card-back">${emoji}</div>
+        <div class="card-back"></div>
+        <div class="card-front">${emoji}</div>
       </div>
       `
     );
