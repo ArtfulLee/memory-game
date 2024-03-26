@@ -1,6 +1,7 @@
 import { shuffleArray } from "./shuffleArray.js";
 import { getCards } from "./getCards.js";
 import { flipCard } from "./flipCard.js";
+import { resetGame } from "./resetGame.js";
 
 /**
  * @default
@@ -14,6 +15,7 @@ const EMOJIS = ["🥔", "🍒", "🥑", "🌽", "🥕", "🍇", "🍉", "🍌", 
  * @readonly
  * @const {Object} - Объект с селекторами DOM
  * @property {HTMLButtonElement} SELECTORS.startGame - Кнопка для запуска игры
+ * @property {HTMLButtonElement} SELECTORS.resetButton - Кнопка для перезапуска игры
  * @property {HTMLDivElement} SELECTORS.moves - Количество шагов открытия карточек
  * @property {HTMLDivElement} SELECTORS.timer - Время игры
  * @property {HTMLDivElement} SELECTORS.boardContainer - Контейнер игрового поля
@@ -21,7 +23,8 @@ const EMOJIS = ["🥔", "🍒", "🥑", "🌽", "🥕", "🍇", "🍉", "🍌", 
  * @property {HTMLDivElement} SELECTORS.win - Вы выиграли
  */
 const SELECTORS = {
-  startGame: document.body.querySelector("button"),
+  startGame: document.body.querySelector(".start-button"),
+  resetButton: document.body.querySelector(".reset-button"),
   moves: document.body.querySelector(".moves"),
   timer: document.body.querySelector(".timer"),
   boardContainer: document.body.querySelector(".board-container"),
@@ -82,3 +85,4 @@ function startGame() {
 
 generateGame(EMOJIS);
 SELECTORS.startGame.addEventListener("click", startGame);
+SELECTORS.resetButton.addEventListener("click", resetGame);
