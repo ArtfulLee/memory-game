@@ -36,14 +36,16 @@ const SELECTORS = {
  * @default
  * @readonly
  * @const {Object} - Объект с состояниями игры
- * @property {number} STATE.moves - Текущее количество ходов в игре
- * @property {number} STATE.timer - Текущее время игры
- * @property {boolean} STATE.isStartGame - Текущее состояние игры
+ * @property {number} STATE.amountMoves - Текущее количество ходов в игре
+ * @property {number} STATE.amountTimer - Текущее время игры
+ * @property {number} STATE.timerOnOff - Включение/Отключение таймера
+ * @property {boolean} STATE.isStartGame - Идентификатор интервала для отслеживания времени
  * @property {boolean} STATE.amountFlippedCards - Текущее количество перевернутых пар карт
  */
 const STATE = {
   amountMoves: 0,
   amountTimer: 0,
+  timerOnOff: null,
   isStartGame: false,
   amountFlippedCards: 0,
 };
@@ -81,6 +83,12 @@ function startGame() {
   SELECTORS.board.addEventListener("click", (event) =>
     flipCard(event, emojisForGames, SELECTORS, STATE)
   );
+
+  STATE.timerOnOff = setInterval(() => {
+    STATE.isStartGame ? STATE.amountTimer++ : clearInterval(STATE.timerOnOff);
+
+    SELECTORS.timer.innerText = `время:  ${STATE.amountTimer} sec`;
+  }, 1000);
 }
 
 generateGame(EMOJIS);
