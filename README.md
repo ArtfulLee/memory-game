@@ -1,5 +1,6 @@
 # Memory game
 - Only for PC (Mobile WIP)
+- Play: https://artfullee.github.io/memory-game/
 
 ## Instructions 📋
 
